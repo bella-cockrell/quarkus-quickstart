@@ -17,4 +17,15 @@ class GreetingResourceTest {
              .body(is("Hola from Quarkus REST"));
     }
 
+    @Test
+    void testGreetingEndpoint() {
+        var name = "Bella";
+        given()
+                .pathParam("name", name)
+                .when().get("/hello/greeting/{name}")
+                .then()
+                .statusCode(200)
+                .body(is("hello Bella"));
+    }
+
 }
